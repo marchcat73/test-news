@@ -116,4 +116,6 @@ dependencies {
     } else {
         implementation jscFlavor
     }
+
+    implementation "com.tencent:mmkv-shared:2.2.3"
 }
