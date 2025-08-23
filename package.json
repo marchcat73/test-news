@@ -29,6 +29,7 @@
     "react-native-reanimated": "^4.0.2",
     "react-native-safe-area-context": "^5.6.1",
     "react-native-screens": "^4.15.2",
+    "react-native-svg": "^15.12.1",
     "react-native-worklets": "^0.4.1",
     "swr": "^2.3.6"
   },

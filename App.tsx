@@ -5,41 +5,20 @@
  * @format
  */
 
-import { NewAppScreen } from '@react-native/new-app-screen';
-import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
-import {
-  SafeAreaProvider,
-  useSafeAreaInsets,
-} from 'react-native-safe-area-context';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { SWRConfig } from 'swr';
+import { swrConfig } from './src/shared/api/swr-config';
+import MainNavigation from './src/app/navigation/main-navigation';
 
-function App() {
-  const isDarkMode = useColorScheme() === 'dark';
-
+const App = (): React.JSX.Element => {
   return (
-    <SafeAreaProvider>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <AppContent />
-    </SafeAreaProvider>
+    <SWRConfig value={swrConfig}>
+      <NavigationContainer navigationInChildEnabled>
+        <MainNavigation />
+      </NavigationContainer>
+    </SWRConfig>
   );
-}
-
-function AppContent() {
-  const safeAreaInsets = useSafeAreaInsets();
-
-  return (
-    <View style={styles.container}>
-      <NewAppScreen
-        templateFileName="App.tsx"
-        safeAreaInsets={safeAreaInsets}
-      />
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
+};
 
 export default App;

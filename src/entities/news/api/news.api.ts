@@ -1,17 +1,18 @@
-import { NewsResponse, NewsParams } from '../model/news.types';
 import { httpClient } from '../../../shared/api/http-client';
+import { NewsResponse, NewsParams } from '../model/news.types';
 
 export const newsApi = {
   getTopHeadlines: (params: NewsParams): Promise<NewsResponse> => {
-    const queryParams = new URLSearchParams();
+    const queryParams: Record<string, string> = {
+      page: params.page.toString(),
+      pageSize: params.pageSize.toString(),
+    };
 
-    if (params.q) queryParams.append('q', params.q);
-    if (params.category) queryParams.append('category', params.category);
-    queryParams.append('page', params.page.toString());
-    queryParams.append('pageSize', params.pageSize.toString());
+    if (params.q) queryParams.q = params.q;
+    if (params.category) queryParams.category = params.category;
 
     return httpClient
-      .get(`/top-headlines?${queryParams}`)
+      .get('/top-headlines', { params: queryParams })
       .then(res => res.data);
   },
 };
