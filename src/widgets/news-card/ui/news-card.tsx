@@ -69,9 +69,11 @@ const styles = StyleSheet.create({
   source: {
     fontSize: 12,
     color: '#666',
+    maxWidth: 200,
   },
   date: {
     fontSize: 12,
     color: '#999',
+    maxWidth: 100,
   },
 });

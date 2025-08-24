@@ -52,6 +52,8 @@ export const CategoryFilter = ({
 const styles = StyleSheet.create({
   container: {
     padding: 8,
+    maxHeight: 56,
+    marginBottom: 6,
   },
   category: {
     paddingHorizontal: 16,

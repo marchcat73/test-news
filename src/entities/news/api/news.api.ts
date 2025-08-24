@@ -10,6 +10,7 @@ export const newsApi = {
 
     if (params.q) queryParams.q = params.q;
     if (params.category) queryParams.category = params.category;
+    queryParams.country = 'us';
 
     return httpClient
       .get('/top-headlines', { params: queryParams })

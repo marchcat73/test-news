@@ -11,7 +11,7 @@ import { Loader } from '../../../shared/ui/loader/loader';
 import { Error } from '../../../shared/ui/error/error';
 
 type RootStackParamList = {
-  NewsDetail: { article: NewsArticle };
+  NewsDetailScreen: { article: NewsArticle };
 };
 
 export const NewsList = () => {
@@ -41,7 +41,7 @@ export const NewsList = () => {
   const handlePressArticle = useCallback(
     (article: NewsArticle) => {
       if (article) {
-        navigation.navigate('NewsDetail', { article });
+        navigation.navigate('NewsDetailScreen', { article });
       }
     },
     [navigation],
@@ -75,20 +75,22 @@ export const NewsList = () => {
         selectedCategory={selectedCategory}
         onSelectCategory={handleSelectCategory}
       />
-      {articles && (
-        <FlatList
-          data={articles}
-          renderItem={renderItem}
-          keyExtractor={(item, index) => `${item?.url}-${index}`}
-          onEndReached={loadMore}
-          onEndReachedThreshold={0.5}
-          ListFooterComponent={renderFooter}
-          refreshControl={
-            <RefreshControl refreshing={isLoading} onRefresh={refresh} />
-          }
-          contentContainerStyle={styles.list}
-        />
-      )}
+      <View style={styles.listBox}>
+        {articles && (
+          <FlatList
+            data={articles}
+            renderItem={renderItem}
+            keyExtractor={(item, index) => `${item?.url}-${index}`}
+            onEndReached={loadMore}
+            onEndReachedThreshold={0.5}
+            ListFooterComponent={renderFooter}
+            refreshControl={
+              <RefreshControl refreshing={isLoading} onRefresh={refresh} />
+            }
+            contentContainerStyle={styles.list}
+          />
+        )}
+      </View>
     </View>
   );
 };
@@ -97,6 +99,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#f5f5f5',
+  },
+  listBox: {
+    marginTop: 2,
+    flex: 1,
   },
   list: {
     paddingBottom: 16,
