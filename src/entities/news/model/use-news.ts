@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import useSWRInfinite from 'swr/infinite';
 import { NewsResponse, NewsParams } from './news.types';
 import { newsApi } from '../api/news.api';
@@ -23,7 +22,7 @@ export const useNews = (searchQuery?: string, category?: string) => {
   const { data, error, size, setSize, isLoading, isValidating, mutate } =
     useSWRInfinite(
       getKey,
-      ([url, params]: [string, NewsParams]) => newsApi.getTopHeadlines(params),
+      ([_url, params]: [string, NewsParams]) => newsApi.getTopHeadlines(params),
       {
         revalidateFirstPage: false,
       },
@@ -48,6 +47,7 @@ export const useNews = (searchQuery?: string, category?: string) => {
     articles,
     error,
     isLoading,
+    isValidating,
     isLoadingMore,
     isReachingEnd,
     isEmpty,
