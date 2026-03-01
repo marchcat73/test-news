@@ -10,7 +10,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@apollo/client": "^4.0.0",
+    "@apollo/client": "^4.1.6",
     "@react-native-community/netinfo": "^11.4.1",
     "@react-native/new-app-screen": "0.81.0",
     "@react-navigation/bottom-tabs": "^7.4.6",
