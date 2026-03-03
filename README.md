@@ -1,4 +1,16 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+Очистка кэша Gradle (из папки android):
+
+# Для Linux/Mac
+
+```sh
+cd android && ./gradlew clean && cd ..
+```
+
+# Install Android
+
+```sh
+npx react-native run-android
+```
 
 # Getting Started
 
@@ -89,9 +101,3 @@ If you're having issues getting the above steps to work, see the [Troubleshootin
 # Learn More
 
 To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
