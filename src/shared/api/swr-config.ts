@@ -6,10 +6,12 @@ import { storage } from '../storage/storage';
 import { setupSWRCache } from '../../app/providers/swr-cache';
 
 function mmkvProvider() {
-  const { swrCacheMap, persistCache } = setupSWRCache({
-    set: storage.set.bind(storage),
-    get: storage.getString.bind(storage),
-  });
+  const { swrCacheMap, persistCache } =
+    storage &&
+    setupSWRCache({
+      set: storage.set.bind(storage),
+      get: storage.getString.bind(storage),
+    });
 
   AppState.addEventListener('change', function persistCacheOnAppBackground(s) {
     if (s === 'background') {
